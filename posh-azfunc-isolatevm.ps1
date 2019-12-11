@@ -5,7 +5,8 @@ $csirtsubnetnsg = "csirt-subnet-nsg"
 $csirtsubnetprefix = ""
 $externalip = ""
 $siftuser = "siftuser"
-$sshPublicKey = "ssh-rsa --------"
+$siftvmpassword = $env:siftvmpassword # Set as a variable in the Azure Function
+$sshPublicKey = $env:siftvmsshkey # Set as a variable in the Azure Function
 $SIFTimageResourceGroup = "SIFT"
 $SIFTimagename = "sift-workstation-image-v1.0"
 
@@ -99,7 +100,7 @@ function New-SIFTWorkstationVM {
     $imageid = $SIFTimageid
 
     if ($null -eq (Get-AzVm -name $name)){
-        $securePassword = ConvertTo-SecureString 'nvisopassword' -AsPlainText -Force
+        $securePassword = ConvertTo-SecureString $siftvmpassword -AsPlainText -Force
         $cred = New-Object System.Management.Automation.PSCredential ($siftuser, $securePassword)
 
         $pip = New-AzPublicIpAddress `

@@ -9,7 +9,8 @@ $csirtsubnetnsg = "csirt-subnet-nsg"
 $csirtsubnetprefix = ""
 $externalip = ""
 $siftuser = "siftuser"
-$sshPublicKey = "ssh-rsa ---------"
+$siftvmpassword = $env:siftvmpassword # Set as a variable in the Azure Function
+$sshPublicKey = $env:siftvmsshkey # Set as a variable in the Azure Function
 $SIFTimageResourceGroup = "SIFT"
 $SIFTimagename = "sift-workstation-image-v1.0"
 
