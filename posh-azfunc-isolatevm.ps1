@@ -74,7 +74,7 @@ function New-CSIRTSubnet {
 
 function Move-AzVMtoCSIRTSubnet {
     param([string]$vmname)
-
+ 
     Write-Output "Move VM to CSIRT subnet"
 
     $vm = Get-AzVM -Name $vmname
